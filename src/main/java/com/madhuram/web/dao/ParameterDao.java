@@ -55,8 +55,8 @@ public class ParameterDao implements Dao<Parameters>{
 
 	@Override
 	public void update(Parameters t) {
-		// TODO Auto-generated method stub
-		
+		String sql = "update Parameters set Value = ? where Parameter = ?";
+		jdbcTemplate.update(sql, t.getValue(), t.getParameter());
 	}
 
 	@Override

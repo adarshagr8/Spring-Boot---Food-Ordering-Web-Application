@@ -4,7 +4,7 @@ public class Gallery {
 	private Integer PhotoID;
 	private String Tag;
 	private String Image;
-	private java.time.LocalDateTime DateAdded;
+	private String DateAdded;
 	
 	public Integer getPhotoID() {
 		return PhotoID;
@@ -24,10 +24,10 @@ public class Gallery {
 	public void setImage(String image) {
 		Image = image;
 	}
-	public java.time.LocalDateTime getDateAdded() {
+	public String getDateAdded() {
 		return DateAdded;
 	}
-	public void setDateAdded(java.time.LocalDateTime dateAdded) {
+	public void setDateAdded(String dateAdded) {
 		DateAdded = dateAdded;
 	}
 	

@@ -10,7 +10,7 @@ public class Orders {
 	private Double DeliveryCharge;
 	private Double TotalAmount;
 	private String Status;
-	private Integer TransactionID;
+	private String TransactionID;
 	private Integer UserID;
 	
 	public Integer getOrderID() {
@@ -67,10 +67,10 @@ public class Orders {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public Integer getTransactionID() {
+	public String getTransactionID() {
 		return TransactionID;
 	}
-	public void setTransactionID(Integer transactionID) {
+	public void setTransactionID(String transactionID) {
 		TransactionID = transactionID;
 	}
 	public Integer getUserID() {

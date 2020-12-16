@@ -20,7 +20,6 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login() {
-		System.out.println("logincontrolled " + securityService.findLoggedInUsername());
 		if(securityService.findLoggedInUsername() != null) {
 			return "redirect:/";
 		}
@@ -30,7 +29,6 @@ public class LoginController {
 	@PostMapping("/processLogin")
 	public String login(@ModelAttribute Users user) {
 		securityService.autoLogin(user.getEmailAddress(), user.getPassword());
-//		System.out.println(securityService.findLoggedInUsername());
 		return "redirect:/";
 	}
 }

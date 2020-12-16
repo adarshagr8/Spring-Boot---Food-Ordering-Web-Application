@@ -7,7 +7,8 @@ public class Complaints {
 	private String ComplaintMessage;
 	private String Image;
 	private Integer UserID;
-
+	private String Status;
+	
 	public Integer getComplaintID() {
 		return ComplaintID;
 	}
@@ -56,4 +57,19 @@ public class Complaints {
 		UserID = userID;
 	}
 
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Complaints [ComplaintID=" + ComplaintID + ", RecordedTime=" + RecordedTime + ", Subject=" + Subject
+				+ ", ComplaintMessage=" + ComplaintMessage + ", Image=" + Image + ", UserID=" + UserID + ", Status="
+				+ Status + "]";
+	}
+	
 }

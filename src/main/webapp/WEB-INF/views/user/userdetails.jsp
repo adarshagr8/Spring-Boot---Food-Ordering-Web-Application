@@ -3,7 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:wrapper>
 <div class="container p-2">
-<h3>User Details</h3>
+<h2 class="p-3">User Details</h2>
+</div>
+<div class="row p-3">
+	<div class="col-9"></div>
+	<div class="col-2">
+	<form action="/user/edit">
+		<button type="submit" class="btn btn-outline-info btn-block" style="widht: 50px; font-size: 24px;">
+			Edit Details
+		</button>
+	</form>
+	</div>
+	<div class="col"></div>
 </div>
 <div class="container">
 	<table class="table">
@@ -41,10 +52,6 @@
 	    <tr>
 	      <th scope="row">Locality</th>
 	      <td>${user.getLocality()}</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">Zipcode</th>
-	      <td>${user.getZipcode()}</td>
 	    </tr>
 	    <tr>
 	      <th scope="row">Gender</th>

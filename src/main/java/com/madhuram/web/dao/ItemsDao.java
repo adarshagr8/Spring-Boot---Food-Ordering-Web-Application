@@ -59,20 +59,53 @@ public class ItemsDao implements Dao<Items>{
 	
 	@Override
 	public int save(Items t) {
-		// TODO Auto-generated method stub
-		return 0;
+		t.setEnabled(1);
+		String sql = "insert into Items (ItemName, ItemCost, ItemImage, ItemDescription, ExpiryDuration, MaxAllowedQty, MaxTemperature, MinTemperature, CategoryID, enabled)" + 
+		"values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		return jdbcTemplate.update(sql,
+				t.getItemName(),
+				t.getItemCost(),
+				t.getItemImage(),
+				t.getItemDescription(),
+				t.getExpiryDuration(),
+				t.getMaxAllowedQty(),
+				t.getMaxTemperature(),
+				t.getMinTemperature(),
+				t.getCategoryID(),
+				t.getEnabled());
 	}
 
 	@Override
 	public void update(Items t) {
-		// TODO Auto-generated method stub
-		
+		String sql = "update Items set ItemName = ?, ItemCost = ?, ItemImage = ?, ItemDescription = ?, ExpiryDuration = ?, MaxAllowedQty = ?, MaxTemperature = ?, MinTemperature = ?, CategoryID = ?, enabled = ?"
+				+ " where ItemID = ?;";
+		jdbcTemplate.update(sql,
+				t.getItemName(),
+				t.getItemCost(),
+				t.getItemImage(),
+				t.getItemDescription(),
+				t.getExpiryDuration(),
+				t.getMaxAllowedQty(),
+				t.getMaxTemperature(),
+				t.getMinTemperature(),
+				t.getCategoryID(),
+				t.getEnabled(),
+				t.getItemID());
 	}
 
 	@Override
 	public void delete(Items t) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 	
+	public int disable(Items t) {
+		String sql = "update Items set enabled = 0 where ItemID = ?";
+		return jdbcTemplate.update(sql,
+				t.getItemID());
+	}
+	public int enable(Items t) {
+		String sql = "update Items set enabled = 1 where ItemID = ?";
+		return jdbcTemplate.update(sql,
+				t.getItemID());
+	}
 }

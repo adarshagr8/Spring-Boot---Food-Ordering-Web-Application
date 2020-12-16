@@ -11,9 +11,8 @@ public class Users{
 	private String HouseNo;
 	private String Street;
 	private String Locality;
-	private Integer Zipcode;
 	private String Gender;
-	private java.time.LocalDate CreatedDate;
+	private String CreatedDate;
 	private String Password;
 	public Integer getUserID() {
 		return UserID;
@@ -76,22 +75,16 @@ public class Users{
 	public void setLocality(String locality) {
 		Locality = locality;
 	}
-	public Integer getZipcode() {
-		return Zipcode;
-	}
-	public void setZipcode(Integer zipcode) {
-		Zipcode = zipcode;
-	}
 	public String getGender() {
 		return Gender;
 	}
 	public void setGender(String gender) {
 		Gender = gender;
 	}
-	public java.time.LocalDate getCreatedDate() {
+	public String getCreatedDate() {
 		return CreatedDate;
 	}
-	public void setCreatedDate(java.time.LocalDate createdDate) {
+	public void setCreatedDate(String createdDate) {
 		CreatedDate = createdDate;
 	}
 	public String getPassword() {
@@ -105,7 +98,7 @@ public class Users{
 	public String toString() {
 		return "Users [UserID=" + UserID + ", Name=" + Name + ", EmailAddress=" + EmailAddress + ", PhoneNumber="
 				+ PhoneNumber + ", Enabled=" + Enabled + ", Authority=" + Authority + ", DOB=" + DOB + ", HouseNo="
-				+ HouseNo + ", Street=" + Street + ", Locality=" + Locality + ", Zipcode=" + Zipcode + ", Gender="
+				+ HouseNo + ", Street=" + Street + ", Locality=" + Locality + ", Gender="
 				+ Gender + ", CreatedDate=" + CreatedDate + ", Password=" + Password + "]";
 	}
 	

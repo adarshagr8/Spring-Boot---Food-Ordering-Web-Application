@@ -56,6 +56,20 @@ public class OrdersDao implements Dao<Orders>{
 		}
 	}
 
+	
+	public List<Orders> getForUser(int uid) {
+		// TODO Auto-generated method stub
+		String sql = "select * from Orders where UserID = ?";
+		try {
+			List<Orders> orders = jdbcTemplate.query(sql,
+					new Object[] {uid},
+                    new BeanPropertyRowMapper<>(Orders.class));
+			return orders; 
+		}
+		catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
 	@Override
 	public int save(Orders t) {
 		String sql = "insert into Orders (OrderDate, OrderTime,TotalQty,Amount,GST,DeliveryCharge,TotalAmount,Status,UserID)" + 

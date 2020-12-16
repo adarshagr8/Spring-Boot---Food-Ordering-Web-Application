@@ -1,0 +1,33 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<t:ordertemplate>
+<div class="container p-2">
+<h2 class="pt-5">We are sorry for the Inconvenience, Please enter a few details here...</h2>
+</div>
+<div class="container pt-4">
+	<form action="/user/complaint/process" method="post" enctype="multipart/form-data">
+	  <div class="form-group row p-2">
+	    <p class="font-weight-bold col-sm-2 col-form-label">Subject</p>
+	    <div class="col-sm-7">
+	      <input type="text" class="form-control" name="Subject" required>
+	    </div>
+	  </div>
+	   <div class="form-group row p-2">
+	    <p class="font-weight-bold col-sm-2 col-form-label">Message</p>
+	    <div class="col-sm-7">
+	      <textarea class="form-control" name="ComplaintMessage" required></textarea>
+	    </div>
+	  </div>
+	  <div class="form-group row p-2">
+	    <p class="font-weight-bold col-sm-2 col-form-label">Image</p>
+	    <div class="col-sm-7">
+	      <input type="file" class="form-control" name="photo"/>
+	    </div>
+	  </div>
+	  <div class="form-group row  float-right">
+	  <button type="submit" class="btn btn-info" style="width:200px; height: 50px; margin-right: 50px;">Submit</button>
+	  </div>
+	</form>
+</div>
+</t:ordertemplate>

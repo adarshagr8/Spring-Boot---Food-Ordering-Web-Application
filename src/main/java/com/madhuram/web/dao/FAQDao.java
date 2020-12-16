@@ -55,13 +55,19 @@ public class FAQDao implements Dao<FAQ>{
 	@Override
 	public void update(FAQ t) {
 		// TODO Auto-generated method stub
-		
+		String sql = "update FAQ set Question = ?, Answer = ? where QuestionID = ?";
+		jdbcTemplate.update(sql,
+				t.getQuestion(),
+				t.getAnswer(),
+				t.getQuestionID());
 	}
 
 	@Override
 	public void delete(FAQ t) {
 		// TODO Auto-generated method stub
-		
+		String sql = "delete from FAQ where QuestionId = ?";
+		jdbcTemplate.update(sql,
+				t.getQuestionID());
 	}
 	
 

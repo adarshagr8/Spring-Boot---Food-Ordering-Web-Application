@@ -8,6 +8,7 @@ public class Items{
 	private String ItemDescription;
 	private Integer ExpiryDuration;
 	private Double MaxAllowedQty;
+	private Integer Enabled;
 	private Integer MaxTemperature;
 	private Integer MinTemperature;
 	private Integer CategoryID;
@@ -73,13 +74,22 @@ public class Items{
 	public void setCategoryID(Integer categoryID) {
 		CategoryID = categoryID;
 	}
+	
+	public Integer getEnabled() {
+		return Enabled;
+	}
+	public void setEnabled(Integer enabled) {
+		Enabled = enabled;
+	}
 	@Override
 	public String toString() {
-		return "Items [ItemID=" + ItemID + ", ItemName=" + ItemName + ", ItemCost=" + ItemCost + ", ItemDescription="
-				+ ItemDescription + ", ExpiryDuration=" + ExpiryDuration + ", MaxAllowedQty=" + MaxAllowedQty
-				+ ", MaxTemperature=" + MaxTemperature + ", MinTemperature=" + MinTemperature + ", CategoryID="
-				+ CategoryID + "]";
+		return "Items [ItemID=" + ItemID + ", ItemName=" + ItemName + ", ItemCost=" + ItemCost + ", ItemImage="
+				+ ItemImage + ", ItemDescription=" + ItemDescription + ", ExpiryDuration=" + ExpiryDuration
+				+ ", MaxAllowedQty=" + MaxAllowedQty + ", MaxTemperature=" + MaxTemperature + ", MinTemperature="
+				+ MinTemperature + ", CategoryID=" + CategoryID + "]";
 	}
+	
+	
 	
 	
 	

@@ -22,7 +22,7 @@
 	    <label for="exampleInputPassword1">Password</label>
 	    <input name="Password" type="password" class="form-control" id="exampleInputPassword1">
 	  </div>
-	  <div class="form-group ">
+	  <div class="form-group">
 	    <label for="exampleInputDOB">Date of Birth</label>
 	    <input name="DOB" type="date" class="form-control" id="exampleInputDOB">
 	  </div>

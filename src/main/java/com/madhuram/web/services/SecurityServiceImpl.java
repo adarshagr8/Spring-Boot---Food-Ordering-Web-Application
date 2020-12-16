@@ -39,12 +39,12 @@ public class SecurityServiceImpl implements SecurityService {
                 userDetails, password, userDetails.getAuthorities());
         try {
         	authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        	if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            }
         }
         catch(Exception e){
         	System.out.println(e);
-        }
-        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
         }
 	}
 

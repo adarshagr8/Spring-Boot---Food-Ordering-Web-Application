@@ -43,19 +43,29 @@ public class CategoryDao implements Dao<Categories>{
 
 	@Override
 	public int save(Categories t) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "Insert into Categories(CategoryName, CategoryDescription, ManagerName) values(?,?,?)";
+		return jdbcTemplate.update(sql,
+				t.getCategoryName(),
+				t.getCategoryDescription(),
+				t.getManagerName());
 	}
 
 	@Override
 	public void update(Categories t) {
-		// TODO Auto-generated method stub
+		String sql = "update Categories set CategoryName = ?, CategoryDescription = ?, ManagerName = ?"
+				+ " where CategoryID = ?;";
+		jdbcTemplate.update(sql,
+				t.getCategoryName(),
+				t.getCategoryDescription(),
+				t.getManagerName(),
+				t.getCategoryID());
 		
 	}
 
 	@Override
 	public void delete(Categories t) {
-		// TODO Auto-generated method stub
+		String sql = "Delete from Categories where CategoryID = ? ";
+		jdbcTemplate.update(sql, t.getCategoryID());
 		
 	}
 	

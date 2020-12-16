@@ -45,7 +45,7 @@
 			Item Total
 		</div>
 		<div class="col-2">
-			${order.getAmount()}
+			${order.getAmount()} ₹
 		</div>
 	</div>
 	<div class="row pt-4">
@@ -53,7 +53,7 @@
 			GST Charges
 		</div>
 		<div class="col-2">
-			${order.getGST()}
+			${order.getGST()} ₹
 		</div>
 	</div>
 	<div class="row pt-4">
@@ -61,7 +61,7 @@
 			Delivery Charges
 		</div>
 		<div class="col-2">
-			${order.getDeliveryCharge()}
+			${order.getDeliveryCharge()} ₹
 		</div>
 	</div>
 	<div class="row pt-4">
@@ -69,7 +69,7 @@
 			Total Amount
 		</div>
 		<div class="col-2">
-			${order.getTotalAmount()}
+			${order.getTotalAmount()} ₹
 		</div>
 	</div>
 	<div class="row pt-4">
@@ -121,7 +121,7 @@
 					<p>${q.getQuantity()}</p>
 				</div>
 				<div class="col">
-					<p>${q.getPrice()}</p>
+					<p>${q.getPrice()} ₹</p>
 				</div>
 			</div>
 		</c:forEach>
@@ -129,7 +129,7 @@
 	</div>
 	</h5>
 	<div class="container" style="padding-top: 50px; padding-bottom: 50px;">
-			<form action="/downloadinvoice" method="post">
+			<form action="/downloadinvoice" method="post" target="_blank">
 				<input name="tid" value="${txn.getTransactionID()}"  style="display: none;">
 		 		<button type="submit" class="btn btn-outline-info btn-block " style="widht: 50px; font-size: 24px;">Download Invoice</button>
 		 	</form>

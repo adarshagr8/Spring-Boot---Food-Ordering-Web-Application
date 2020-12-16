@@ -5,7 +5,6 @@ public class Categories {
 	private String CategoryName;
 	private String CategoryDescription;
 	private String ManagerName;
-	private String ManagerPhoneNumber;
 
 	public String getCategoryDescription() {
 		return CategoryDescription;
@@ -37,14 +36,6 @@ public class Categories {
 
 	public void setManagerName(String managerName) {
 		ManagerName = managerName;
-	}
-
-	public String getManagerPhoneNumber() {
-		return ManagerPhoneNumber;
-	}
-
-	public void setManagerPhoneNumber(String managerPhoneNumber) {
-		ManagerPhoneNumber = managerPhoneNumber;
 	}
 
 }

@@ -6,6 +6,7 @@ public class Feedbacks {
 	private String Subject;
 	private String FeedbackMessage;
 	private Integer UserID;
+	private Integer Status;
 	
 	public Integer getFeedbackID() {
 		return FeedbackID;
@@ -36,6 +37,12 @@ public class Feedbacks {
 	}
 	public void setUserID(Integer userID) {
 		UserID = userID;
+	}
+	public Integer getStatus() {
+		return Status;
+	}
+	public void setStatus(Integer status) {
+		Status = status;
 	}
 	
 	

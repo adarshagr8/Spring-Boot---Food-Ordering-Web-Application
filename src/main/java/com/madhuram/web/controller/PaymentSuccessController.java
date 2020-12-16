@@ -80,9 +80,9 @@ public class PaymentSuccessController {
 		URL url = new URL("https://invoice-generator.com");
 		JSONObject data = new JSONObject();
 		data.put("logo", "https://i.ibb.co/rHQmSgX/madhuram-sweets.png");
-		data.put("from", "Madhuram Sweets,\n Near Bus Stand, Mandla, \n, Madhya Pradesh Pin - 481661");
+		data.put("from", "Madhuram Sweets,\nNear Bus Stand, Mandla, \nMadhya Pradesh Pin - 481661");
 		data.put("to", u.getName() + '\n' + "Email: " + u.getEmailAddress() + "\n" + "Phone: " + u.getPhoneNumber());
-		data.put("ship_to", u.getHouseNo() + " " + u.getLocality() + "\n" + u.getStreet() + " Pin - " + u.getZipcode());
+		data.put("ship_to", u.getHouseNo() + "\n" + u.getLocality() + "\n" + u.getStreet());
 		data.put("number", o.getOrderID());
 		data.put("currency", "INR");
 		data.put("date", o.getOrderDate().toString());
@@ -154,12 +154,11 @@ public class PaymentSuccessController {
 		t.setTransactionID(formData.getFirst("TXNID"));
 		t.setBankTransactionID(formData.getFirst("BANKTXNID"));
 		t.setInvoiceAmount(Double.parseDouble(formData.getFirst("TXNAMOUNT")));
-		t.setStatus("SUCCESS");
+		t.setStatus(status);
 		t.setUserID(userId);
 		t.setTransactionTime(LocalDateTime.now());
 		t.setPaymentMethod(formData.getFirst("PAYMENTMODE"));
 		List<Cart> l = cartDao.getItemList(userId);
-		System.out.println(l);
 		cartDao.clearCart(userId);
 		List<OrderedItems> il = new LinkedList();
 		List<CartItem> cl = new LinkedList();
@@ -188,6 +187,38 @@ public class PaymentSuccessController {
 		m.addAttribute("items", cl);
 		m.addAttribute("txn", t);
 		return "/txnsuccess";
+	}
+	
+	@RequestMapping("/pgresponse/failed")
+	public String failed(@ModelAttribute("data") Object flashAttribute, Model m) {
+		@SuppressWarnings("unchecked")
+		MultiValueMap<String, String> formData = (MultiValueMap<String, String>) flashAttribute;
+		Integer orderId = Integer.parseInt(formData.getFirst("ORDERID"));
+		Orders o = ordersDao.get(orderId);
+		Integer userId = o.getUserID();
+		Users user = userDao.get(userId);
+		String txnId = formData.getFirst("TXNID");
+		String banktId = formData.getFirst("BANKTXNID");
+		Double amount = Double.parseDouble(formData.getFirst("TXNAMOUNT"));
+		String status = formData.getFirst("STATUS");
+		String method = formData.getFirst("PAYMENTMODE");
+		String message = formData.getFirst("RESPMSG");
+		ordersDao.updateStatus(orderId, "FAILED");
+		o.setStatus("Failed");
+		Transactions t = new Transactions();
+		t.setTransactionID(formData.getFirst("TXNID"));
+		t.setBankTransactionID(formData.getFirst("BANKTXNID"));
+		t.setInvoiceAmount(Double.parseDouble(formData.getFirst("TXNAMOUNT")));
+		t.setStatus(status);
+		t.setUserID(userId);
+		t.setTransactionTime(LocalDateTime.now());
+		t.setPaymentMethod(formData.getFirst("PAYMENTMODE"));
+		transactionDao.save(t);
+		ordersDao.updateTxn(orderId, t.getTransactionID());
+		m.addAttribute("order", o);
+		m.addAttribute("txn", t);
+		m.addAttribute("message", message);
+		return "/txnfailed";
 	}
 	
 	@ResponseBody

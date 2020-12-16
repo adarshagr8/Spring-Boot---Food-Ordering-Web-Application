@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.madhuram.web.dao.FAQDao;
+import com.madhuram.web.dao.GalleryDao;
 import com.madhuram.web.dao.UserDao;
 import com.madhuram.web.entities.FAQ;
+import com.madhuram.web.entities.Gallery;
 import com.madhuram.web.services.SecurityService;
 
 @Controller
@@ -20,6 +22,8 @@ public class FrontController {
 	@Autowired
 	public FAQDao faq;
 	@Autowired
+	public GalleryDao galleryDao;
+	@Autowired
 	private SecurityService securityService;
 	@ModelAttribute
 	public void addAttributes(Model model) {
@@ -28,6 +32,8 @@ public class FrontController {
 	
 	@RequestMapping("/")
 	public String home(Model m) {
+		List<Gallery> l = galleryDao.getAll();
+		m.addAttribute("gallery", l);
 		return "home";
 	}
 	@RequestMapping("/about")

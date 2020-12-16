@@ -27,17 +27,15 @@ public class RegisterController {
     
     @RequestMapping(path = "/register", method=RequestMethod.GET)
 	public String register() {
-    	System.out.println("1");
-    	System.out.println("logincontrolled " + securityService.findLoggedInUsername());
 		if(securityService.findLoggedInUsername() != null) {
 			return "redirect:/";
 		}
 		return "register";
 	}
     
-    @GetMapping("/register-success")
+    @RequestMapping("/register-success")
    	public String registerSuccess() {
-   		return "/";
+   		return "redirect:/";
    	}
        
     @RequestMapping(path = "/register", method=RequestMethod.POST)
@@ -46,7 +44,7 @@ public class RegisterController {
         user.setEnabled(Boolean.TRUE);
         user.setPassword(encodedPassword);
         user.setAuthority("user");
-        user.setCreatedDate(LocalDate.now());
+        user.setCreatedDate(LocalDate.now().toString());
         userDao.save(user);
         securityService.autoLogin(user.getEmailAddress(), encodedPassword);
         return "redirect:register-success";
